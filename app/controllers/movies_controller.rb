@@ -39,7 +39,24 @@ class MoviesController < ApplicationController
     matching_records=Movie.where({:id => the_id})
     the_movie=matching_records.at(0)
     the_movie.destroy
-    
+
     redirect_to("/movies")
   end
+
+  def update
+    the_id=params.fetch("the_id")
+    matching_records=Movie.where({:id=>the_id})
+    m=matching_records.at(0)
+    
+    m=Movie.new
+    m.title=params.fetch("the_title")
+    m.year=params.fetch("the_year")
+    m.duration=params.fetch("the_duration")
+    m.description=params.fetch("the_description")
+    m.image=params.fetch("the_image")
+    m.director_id=params.fetch("the_director")
+
+    m.save
+    redirect_to("/movies/#{the_id}")
+end
 end
