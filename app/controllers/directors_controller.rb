@@ -45,7 +45,7 @@ class DirectorsController < ApplicationController
     d.image=params.fetch("the_image")
 
     d.save
-    redirect_to({ :template => "director_templates/index" })
+    redirect_to("/directors")
   end
 
   def destroy
@@ -69,6 +69,6 @@ def update
   d.image=params.fetch("the_image")
 
   d.save
-  redirect_to({ :template => "director_templates/#{the_id}" })
+  redirect_to("/directors/#{the_id}")
 end
 end

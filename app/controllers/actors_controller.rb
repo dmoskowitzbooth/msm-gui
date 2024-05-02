@@ -53,6 +53,6 @@ class ActorsController < ApplicationController
     a.image=params.fetch("the_image")
   
     a.save
-    redirect_to({ :template => "actor_templates/#{the_id}" })
+    redirect_to("/actors/#{the_id}")
   end
 end
