@@ -40,4 +40,19 @@ class ActorsController < ApplicationController
 
     redirect_to("/actors")
   end
+
+  def update
+    the_id=params.fetch("the_id")
+    matching_records=Actor.where({:id=>the_id})
+    a=matching_records.at(0)
+    
+    a=Actor.new
+    a.name=params.fetch("the_name")
+    a.dob=params.fetch("the_dob")
+    a.bio=params.fetch("the_bio")
+    a.image=params.fetch("the_image")
+  
+    a.save
+    redirect_to({ :template => "actor_templates/#{the_id}" })
+  end
 end

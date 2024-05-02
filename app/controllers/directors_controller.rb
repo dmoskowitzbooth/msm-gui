@@ -69,6 +69,6 @@ def update
   d.image=params.fetch("the_image")
 
   d.save
-  redirect_to({ :template => "director_templates/index" })
+  redirect_to({ :template => "director_templates/#{the_id}" })
 end
 end
